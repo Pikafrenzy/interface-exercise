@@ -1,4 +1,4 @@
-# Java Project Practice Run
+# Interfaces Exercise
 
 A riddle wrapped around an enigma containing interfaces in Java.
 
