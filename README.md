@@ -12,9 +12,9 @@ Sentences contain words. Words contain characters The order of these words and c
 
 If you were trying to model human written language, you might decide to create a **Sentence** class to represent sentences, a **Word** class to represent words, and a **Character** class to represent characters.
 
-- Since sentences contain words, any `Sentence` object would have to encapsulate a list of Word objects.
-- Since Words contain `Character` objects, any `Word` object would have to encapsulate a list of `Character` objects.
-- Since both `Sentence` and `Word` objects contain sequentially ordered lists of things, you might make them both implement the same `SequentiallyOrdered` interface to guarantee consistency.
+- Since sentences contain words, any `Sentence` object would have to encapsulate a list of `Word` objects.
+- Since words contain `Character` objects, any `Word` object would have to encapsulate a list of `Character` objects.
+- Since both `Sentence` and `Word` objects contain sequentially ordered lists of things, you might make them both implement the same `SequentiallyOrdered` interface to guarantee consistency of behavior.
 - Since both `Word` and `Character` objects can be stored in ordered lists, you may have them both inherit from a common `OrderedThing` class that may contain any attributes shared by all ordered things.
 
 ### The SequentiallyOrdered Interface
@@ -37,11 +37,11 @@ public interface SequentiallyOrdered {
 
 ### The Character Class
 
-You will need to create a class that represents a single Character.
+You will need to create a class that represents a single character of text.
 
 - `Character` extends `OrderedThing` because each `Character` object will be stored in an ordered `ArrayList` of `Character` objects in a Word object.
 
-Note: a class named `Character` already exists in the Java API `java.lang` package, so your class with the same name hides that one. If you want to refer to that API class (which you shouldn't need to), you'll need to reference it by its full package and class name, such as `java.lang.Character` in your code.
+Note: _a class named `Character` already exists in the Java API `java.lang` package, so your class with the same name hides that one. If you want to refer to that API class (which you shouldn't need to), you'll need to reference it by its full package and class name, such as `java.lang.Character` in your code._
 
 ### The Word Class
 
@@ -83,7 +83,9 @@ You should create a third class, `Sentence`, that represents sentences in a lang
 
 #### Instance attributes
 
-Sentence should have a single instance field of type `ArrayList<Word>` which will store the Words of a sentence. This relationship between the `Sentence` and `Word` classes is called composition, because a `Sentence` is composed of Words. _Note that there is NOT an inheritance relationship between `Sentence` and `Word`_.
+Sentence should have a single instance field of type `ArrayList<Word>` which will store the words of a sentence. This relationship between the `Sentence` and `Word` classes is called composition, because a `Sentence` is composed of `Word`objects.
+
+Note: _there is NOT an inheritance relationship between `Sentence` and `Word`_.
 
 #### Instance methods
 
@@ -95,7 +97,7 @@ Sentence should have the following methods:
 
 #### Hint
 
-Based on the description of this class above, it should be clear to you how `Sentence` implements the `SequentiallyOrdered` interface, which requires the `getFirst()` and `getLast()` methods to return an `OrderedThing`. If not, here is a hint: a child class can be considered an instance of its parent class... this is polymorphism. So a Word object, if it extends `OrderedThing`, can also be considered an instance of the `OrderedThing` class.
+Based on the description of this class above, it should be clear to you how `Sentence` implements the `SequentiallyOrdered` interface, which requires the `getFirst()` and `getLast()` methods to return an `OrderedThing`. If not, here is a hint: a child class can be considered an instance of its parent class... this is polymorphism. So a `Word` object, if it extends `OrderedThing`, can also be considered an instance of the `OrderedThing` class.
 
 #### Constructors
 
@@ -106,11 +108,11 @@ The `Sentence` constructor should take a single `String` parameter representing 
 String[] words = s.split("[^\\w']+")
 ```
 
-Notice that the `split()` method will give you an array of `String`s, and you will need to go through that array, creating `Word`s and adding them to the `ArrayList<Word>`.
+Notice that the `split()` method will give you an array of `String` objects, and you will need to go through that array, creating `Word` objects and adding them to the `ArrayList<Word>`.
 
 ### The TestSequence Class
 
-Create a test class with a `main` method that shows how a `Sentence` object can be instantiated with a sentence of your choosing, how each of the methods of the `Sentence` class can be called in a meaningful way, and how each of the methods of the `Word` class can be called on at least one of the `Word`s encapsulated within the `Sentence` object's `ArrayList<Word>` instance field that you created.
+Create a test class with a `main` method that shows how a `Sentence` object can be instantiated with a sentence of your choosing, how each of the methods of the `Sentence` class can be called in a meaningful way, and how each of the methods of the `Word` class can be called on at least one of the `Word` objects encapsulated within the `Sentence` object's `ArrayList<Word>` instance field that you created.
 
 ### Folder structure
 
